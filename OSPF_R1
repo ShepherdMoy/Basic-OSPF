@@ -1,0 +1,52 @@
+
+interface Loopback5
+ ip address 10.1.1.1 255.255.255.0
+!
+interface Loopback6
+ ip address 10.1.2.1 255.255.255.0
+!
+interface Loopback7
+ ip address 10.1.3.1 255.255.255.0
+!
+interface Loopback8
+ ip address 10.1.4.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.0.12.1 255.255.255.248
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 110
+ router-id 1.1.1.1
+ network 10.0.12.1 0.0.0.0 area 0
+ network 10.1.0.0 0.0.255.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
